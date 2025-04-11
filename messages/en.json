@@ -1,4 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from en!"
+	"title": "GenX – All-in-One AI Extension",
+	"description": "GenX is a browser-based extension that provides a unified UI for interacting with both local and API-powered AI models, all in one place.",
+	"what_can_i_help_with": "What can I help with?",
+	"ask_anything": "Ask anything",
+	"add": "Add",
+	"search": "Search",
+	"reason": "Reason",
+	"more_options": "More options",
+	"submit": "Submit"
 }
