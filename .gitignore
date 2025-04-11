@@ -31,3 +31,5 @@ src/lib/paraglide
 .idea
 .vscode
 bun.lock
+
+*.pem
