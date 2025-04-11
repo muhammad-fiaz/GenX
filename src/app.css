@@ -2,23 +2,24 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #1e1e1e;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #1e1e1e;
 }
 
 /* Custom small scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 4px; /* Smaller width */
-    height: 4px; /* For horizontal if needed */
+	width: 4px; /* Smaller width */
+	height: 4px; /* For horizontal if needed */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.25);
-    border-radius: 3px;
+	background-color: rgba(255, 255, 255, 0.25);
+	border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
+	background: transparent;
 }
