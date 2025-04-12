@@ -10,7 +10,7 @@ const getConfig = (): Record<string, never> => {
 	try {
 		const configData = fs.readFileSync(OLLAMA_CONFIG_PATH, 'utf8');
 		return JSON.parse(configData);
-	} catch  {
+	} catch {
 		throw new Error('Failed to read Ollama configuration file.');
 	}
 };

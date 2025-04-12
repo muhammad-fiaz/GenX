@@ -17,7 +17,7 @@
 </svelte:head>
 
 <!-- Full-screen layout -->
-<div class="flex flex-col h-screen">
+<div class="flex h-screen flex-col">
 	<!-- Top Navbar -->
 	<TopNavbar />
 
@@ -26,8 +26,8 @@
 		<Sidebar />
 
 		<!-- Main Content -->
-		<div class="flex flex-col items-center justify-center flex-1 bg-[#1e1e1e] px-4 text-white">
-			<h1 class="text-2xl font-semibold text-center md:text-3xl mb-6">
+		<div class="flex flex-1 flex-col items-center justify-center bg-[#1e1e1e] px-4 text-white">
+			<h1 class="mb-6 text-center text-2xl font-semibold md:text-3xl">
 				{m.what_can_i_help_with()}
 			</h1>
 			<Input {message} on:messageChange={handleInput} />

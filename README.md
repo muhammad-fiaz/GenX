@@ -1,8 +1,9 @@
 # GenX
 
-**GenX** is a browser-based Chrome extension that provides a local-first AI UI and developer studio. It enables users to interact with backend services and AI models directly from the browser.
+**GenX** is a browser-based extension that provides a local-first AI UI and developer studio. It enables users to interact with backend services and AI models directly from the local browser.
 
 > This Project is in Active Development.
+
 ---
 
 ## 🤝 Contributing
@@ -22,6 +23,7 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 ## 📄 License
 
 This project is licensed under the **Apache 2.0 License**.
+
 ```text
    Copyright 2025 Muhammad Fiaz
 
@@ -37,5 +39,5 @@ This project is licensed under the **Apache 2.0 License**.
    See the License for the specific language governing permissions and
    limitations under the License.
 ```
-See the [LICENSE](LICENSE) file for full license text.
 
+See the [LICENSE](LICENSE) file for full license text.
