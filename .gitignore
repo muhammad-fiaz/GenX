@@ -28,8 +28,10 @@ vite.config.ts.timestamp-*
 # Paraglide
 src/lib/paraglide
 
+genx-build-*
+
 .idea
 .vscode
-bun.lock
-
+*.lock
 *.pem
+*.crx
