@@ -1,0 +1,9 @@
+{
+  "api_url": "http://localhost:11434",
+  "timeout": 5000,
+  "retry_attempts": 3,
+  "models": {
+    "default": "llama3.2",
+    "fallback": "gpt-3.5"
+  }
+}
