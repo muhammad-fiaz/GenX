@@ -1,0 +1,12 @@
+{
+  "integrations": [
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "type": "ai",
+      "configPath": "integrations/ollama/configuration.json",
+      "metaPath": "integrations/ollama/meta.json",
+      "enabled": true
+    }
+  ]
+}
