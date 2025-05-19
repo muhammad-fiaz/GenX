@@ -1,13 +1,19 @@
 import type { Handle } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 
-const handleParaglide: Handle = ({ event, resolve }) =>
-	paraglideMiddleware(event.request, ({ request, locale }) => {
+export const handle: Handle = async ({ event, resolve }) => {
+	return paraglideMiddleware(event.request, async ({ request, locale }) => {
 		event.request = request;
 
-		return resolve(event, {
+		const response = await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('%paraglide.lang%', locale)
 		});
-	});
 
-export const handle: Handle = handleParaglide;
+		if (response.status === 404) {
+			throw redirect(307, '/404');
+		}
+
+		return response;
+	});
+};

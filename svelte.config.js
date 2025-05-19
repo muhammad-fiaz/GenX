@@ -3,16 +3,19 @@ import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { execSync } from 'child_process';
 
-function getGitVersion() {
+function getGitTag() {
 	try {
-		return execSync('git describe --tags --always').toString().trim();
+		const tag = execSync('git describe --tags --abbrev=0').toString().trim();
+		return tag || 'latest';
 	} catch {
-		return 'dev';
+		return 'latest';
 	}
 }
 
-const version = getGitVersion().replace(/[^a-zA-Z0-9.-]/g, '_');
-const outDir = `genx-build-${version}`;
+const gitTag = getGitTag().replace(/[^a-zA-Z0-9.-]/g, '_');
+const isProd = process.env.NODE_ENV === 'production' || process.env.MODE === 'production';
+const buildType = isProd ? 'prod' : 'dev';
+const outDir = `genx-build-${gitTag}-${buildType}`;
 
 const config = {
 	preprocess: [vitePreprocess(), mdsvex()],

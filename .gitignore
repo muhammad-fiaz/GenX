@@ -35,3 +35,4 @@ genx-build-*
 *.lock
 *.pem
 *.crx
+export/
