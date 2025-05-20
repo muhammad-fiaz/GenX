@@ -1,38 +1,15 @@
-import { mdsvex } from 'mdsvex';
+// Tauri doesn't have a Node.js server to do proper SSR
+// so we will use adapter-static to prerender the app (SSG)
+// See: https://v2.tauri.app/start/frontend/sveltekit/ for more info
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { execSync } from 'child_process';
 
-function getGitTag() {
-	try {
-		const tag = execSync('git describe --tags --abbrev=0').toString().trim();
-		return tag || 'latest';
-	} catch {
-		return 'latest';
-	}
-}
-
-const gitTag = getGitTag().replace(/[^a-zA-Z0-9.-]/g, '_');
-const isProd = process.env.NODE_ENV === 'production' || process.env.MODE === 'production';
-const buildType = isProd ? 'prod' : 'dev';
-const outDir = `genx-build-${gitTag}-${buildType}`;
-
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: [vitePreprocess(), mdsvex()],
+	preprocess: vitePreprocess(),
 	kit: {
-		adapter: adapter({
-			pages: outDir,
-			assets: outDir,
-			fallback: undefined,
-			precompress: false,
-			strict: true
-		}),
-		appDir: 'app',
-		prerender: {
-			entries: ['*']
-		}
-	},
-	extensions: ['.svelte', '.svx']
+		adapter: adapter()
+	}
 };
 
 export default config;
