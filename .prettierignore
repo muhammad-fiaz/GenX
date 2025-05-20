@@ -4,3 +4,19 @@ pnpm-lock.yaml
 yarn.lock
 bun.lock
 bun.lockb
+node_modules
+# Build
+dist
+build
+# Coverage
+coverage
+# Misc
+.vscode
+.idea
+*.log
+*.sublime-project
+*.sublime-workspace
+*.sublime-settings
+*.swp
+*.swo
+src-tauri
