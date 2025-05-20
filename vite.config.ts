@@ -1,54 +1,38 @@
-import { paraglideVitePlugin } from '@inlang/paraglide-js';
-import tailwindcss from '@tailwindcss/vite';
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		sveltekit(),
-		paraglideVitePlugin({
-			project: './project.inlang',
-			outdir: './src/lib/paraglide'
-		}),
-		VitePWA({
-			registerType: 'autoUpdate',
-			strategies: 'injectManifest',
-			srcDir: 'src',
-			filename: 'service-worker.ts',
-			manifest: {
-				name: 'GenX - AI Studio',
-				short_name: 'GenX - AI Studio',
-				description: 'A browser-based AI UI & Studio using Svelte.',
-				theme_color: '#ffffff',
-				background_color: '#ffffff',
-				display: 'standalone',
-				scope: '/',
-				start_url: '/',
-				icons: [
-					{
-						src: 'icons/favicon-16x16.png',
-						sizes: '16x16',
-						type: 'image/png'
-					},
-					{
-						src: 'icons/favicon-32x32.png',
-						sizes: '32x32',
-						type: 'image/png'
-					},
-					{
-						src: 'icons/android-chrome-192x192.png',
-						sizes: '192x192',
-						type: 'image/png'
-					},
-					{
-						src: 'icons/android-chrome-512x512.png',
-						sizes: '512x512',
-						type: 'image/png'
-					}
-				]
-			}
-		})
-	]
-});
+import { defineConfig } from "vite";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { paraglideVitePlugin } from "@inlang/paraglide-js";
+import tailwindcss from "@tailwindcss/vite";
+// @ts-expect-error process is a nodejs global
+const host = process.env.TAURI_DEV_HOST;
+
+// https://vitejs.dev/config/
+export default defineConfig(async () => ({
+  plugins: [sveltekit(),		paraglideVitePlugin({
+      project: './project.inlang',
+      outdir: './src/lib/paraglide'
+  }),		tailwindcss(),
+  ],
+
+  // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
+  //
+  // 1. prevent vite from obscuring rust errors
+  clearScreen: false,
+  // 2. tauri expects a fixed port, fail if that port is not available
+  server: {
+    port: 1420,
+    strictPort: true,
+    host: host || false,
+    hmr: host
+      ? {
+          protocol: "ws",
+          host,
+          port: 1421,
+        }
+      : undefined,
+    watch: {
+      // 3. tell vite to ignore watching `src-tauri`
+      ignored: ["**/src-tauri/**"],
+    },
+  },
+}));

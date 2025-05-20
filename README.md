@@ -1,6 +1,6 @@
 # GenX
 
-**GenX** is a browser-based extension that provides a local-first AI UI and developer studio. It enables users to interact with backend services and AI models directly from the local browser.
+**GenX** is a cross-platform application that provides a local-first AI UI and developer studio. It enables users to interact with backend services and AI models directly from the local browser.
 
 > This Project is in Active Development.
 
