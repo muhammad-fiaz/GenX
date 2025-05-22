@@ -9,12 +9,14 @@
 </script>
 
 <!-- Chat Page Content -->
-<div class="flex h-full w-full flex-1 flex-col">
-	<!-- Main chat area (you can add chat messages here in the future) -->
-	<div class="flex-1"></div>
+<div class="flex h-full w-full flex-1 flex-col min-w-0 min-h-0 overflow-hidden">
+	<!-- Main chat area (expandable, future messages go here) -->
+	<div class="flex-1 min-h-0 min-w-0 overflow-auto">
+		<!-- Chat messages will go here -->
+	</div>
 	<!-- Fixed Bottom Input -->
-	<div class="fixed bottom-3 left-0 w-full">
-		<div class="mx-auto max-w-2xl">
+	<div class="sticky bottom-0 left-0 w-full z-10">
+		<div class="mx-auto max-w-2xl px-2 py-2">
 			<Input {message} on:messageChange={handleInput} />
 		</div>
 	</div>

@@ -20,3 +20,4 @@ coverage
 *.swp
 *.swo
 src-tauri
+project-inlang/

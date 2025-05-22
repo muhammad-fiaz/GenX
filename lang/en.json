@@ -1,7 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"title": "GenX – All-in-One AI Extension",
-	"description": "GenX is a browser-based extension that provides a unified UI for interacting with both local and API-powered AI models, all in one place.",
+	"title": "GenX – All-in-One AI Application",
+	"description": "GenX is a Rust-based Application that provides a unified UI for interacting with both local and API-powered AI models, all in one place.",
 	"what_can_i_help_with": "What can I help with?",
 	"ask_anything": "Ask anything",
 	"add": "Add",
