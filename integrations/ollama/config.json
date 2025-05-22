@@ -1,0 +1,142 @@
+{
+	"name": "Ollama",
+	"version": "1.0",
+	"description": "Run local AI models using Ollama",
+	"host": "http://localhost:11434",
+	"endpoints": [
+		{
+			"key": "generate",
+			"path": "/api/generate",
+			"method": "POST",
+			"description": "Generate a response using the selected model."
+		},
+		{
+			"key": "chat",
+			"path": "/api/chat",
+			"method": "POST",
+			"description": "Chat endpoint for conversational models (if supported)."
+		},
+		{
+			"key": "models",
+			"path": "/api/tags",
+			"method": "GET",
+			"description": "Retrieve a list of locally available models."
+		}
+	],
+	"settings": [
+		{
+			"key": "model",
+			"label": "Model",
+			"type": "select",
+			"default": "llama3",
+			"options": ["llama3", "mistral", "codellama", "gemma", "phi"],
+			"description": "Select the local model you want to use from available Ollama models."
+		},
+		{
+			"key": "temperature",
+			"label": "Temperature",
+			"type": "number",
+			"default": 0.7,
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"description": "Controls randomness in responses. Lower values produce more deterministic output."
+		},
+		{
+			"key": "top_k",
+			"label": "Top K",
+			"type": "number",
+			"default": 40,
+			"min": 1,
+			"max": 100,
+			"step": 1,
+			"description": "Limits sampling to the top K most likely tokens."
+		},
+		{
+			"key": "top_p",
+			"label": "Top P",
+			"type": "number",
+			"default": 0.9,
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"description": "Use nucleus sampling with the top tokens that make up the probability P."
+		},
+		{
+			"key": "max_tokens",
+			"label": "Max Tokens",
+			"type": "number",
+			"default": 2048,
+			"min": 1,
+			"max": 8192,
+			"step": 1,
+			"description": "Maximum number of tokens to generate in a single response."
+		},
+		{
+			"key": "repeat_penalty",
+			"label": "Repeat Penalty",
+			"type": "number",
+			"default": 1.1,
+			"min": 0.5,
+			"max": 2.0,
+			"step": 0.1,
+			"description": "Penalty for repeating tokens. Higher values reduce repetition."
+		},
+		{
+			"key": "frequency_penalty",
+			"label": "Frequency Penalty",
+			"type": "number",
+			"default": 0,
+			"min": 0,
+			"max": 2,
+			"step": 0.1,
+			"description": "Decreases likelihood of frequent tokens appearing again."
+		},
+		{
+			"key": "presence_penalty",
+			"label": "Presence Penalty",
+			"type": "number",
+			"default": 0,
+			"min": 0,
+			"max": 2,
+			"step": 0.1,
+			"description": "Penalizes tokens already present to encourage diversity."
+		},
+		{
+			"key": "stream",
+			"label": "Enable Streaming",
+			"type": "checkbox",
+			"default": true,
+			"description": "Enable real-time streaming of model output as it generates."
+		},
+		{
+			"key": "stop",
+			"label": "Stop Sequences",
+			"type": "textarea",
+			"default": "",
+			"description": "A comma-separated list of stop sequences that end generation early (e.g., `user:, system:`)."
+		},
+		{
+			"key": "system_prompt",
+			"label": "System Prompt",
+			"type": "textarea",
+			"default": "You are a helpful assistant.",
+			"description": "Global instruction sent with every request to guide model behavior."
+		},
+		{
+			"key": "format",
+			"label": "Output Format",
+			"type": "select",
+			"default": "text",
+			"options": ["text", "json"],
+			"description": "Format of the output returned by the model."
+		},
+		{
+			"key": "template",
+			"label": "Prompt Template",
+			"type": "textarea",
+			"default": "",
+			"description": "Optional custom prompt template string to wrap user input."
+		}
+	]
+}

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { fly } from 'svelte/transition';
-	import Provider from '../../components/provider.svelte';
-	import Models from '../../components/models.svelte';
-	import Custom from '../../components/custom.svelte';
-	import Prompt from '../../components/prompt.svelte';
-	import Downloads from '../../components/downloads.svelte';
+	import Provider from '../../../components/provider.svelte';
+	import Models from '../../../components/models.svelte';
+	import Custom from '../../../components/custom.svelte';
+	import Prompt from '../../../components/prompt.svelte';
+	import Downloads from '../../../components/downloads.svelte';
 	const currentTab = writable<'models' | 'custom' | 'prompt' | 'provider' | 'downloads'>('models');
 	const isSidebarOpen = writable(false); // For responsive sidebar toggle
 
@@ -158,7 +158,7 @@
 		</ul>
 
 		<a
-			href="/"
+			href="/static"
 			class="absolute bottom-6 left-6 inline-block rounded-lg bg-gray-700 px-4 py-2 text-white hover:bg-gray-600"
 		>
 			&larr; Back

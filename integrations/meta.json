@@ -1,11 +1,15 @@
 {
+	"version": "1.0",
+	"description": "Genx - AI Studio",
+	"identifier": "dev.fiaz.genx",
 	"integrations": [
 		{
 			"id": "ollama",
 			"name": "Ollama",
+			"version": "1.0",
+			"description": "Local AI model running through Ollama",
 			"type": "ai",
-			"configPath": "integrations/ollama/configuration.json",
-			"metaPath": "integrations/ollama/meta.json",
+			"configPath": "integrations/ollama/config.json",
 			"enabled": true
 		}
 	]
