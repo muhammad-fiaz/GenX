@@ -53,8 +53,9 @@
 	class="flex h-8 items-center justify-between bg-[#1b1b1b] px-3 shadow-inner select-none"
 	aria-label="Application Titlebar"
 >
+	<!-- Only this region is draggable -->
 	<div
-		class="drag-region flex cursor-grab items-center space-x-3 text-sm font-semibold text-white select-none"
+		class="drag-region flex flex-1 cursor-grab items-center space-x-3 text-sm font-semibold text-white select-none"
 		role="button"
 		tabindex="0"
 		aria-label="Drag window"
@@ -69,7 +70,7 @@
 		<span>GenX</span>
 	</div>
 
-	<div class="flex space-x-1">
+	<div class="ml-auto flex space-x-1">
 		<button
 			id="titlebar-minimize"
 			type="button"

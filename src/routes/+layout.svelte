@@ -1,6 +1,12 @@
 <script lang="ts">
 	import '../app.css';
 	import Titlebar from '../components/titlebar.svelte';
+	import { onMount } from 'svelte';
+	import { invoke } from '@tauri-apps/api/core';
+
+	onMount(() => {
+		invoke('show_main_window');
+	});
 
 	let { children } = $props();
 </script>
