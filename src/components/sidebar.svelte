@@ -1,26 +1,21 @@
 <aside
-	class="flex flex-col items-center text-white shadow bg-[#1b1b1b] overflow-y-auto"
+	class="flex flex-col items-center overflow-y-auto bg-[#1b1b1b] text-white shadow"
 	style="height: calc(100vh - 2rem);"
 >
 	<!-- Logo -->
-	<div class="h-16 flex items-center w-full">
+	<div class="flex h-16 w-full items-center">
 		<a href="/" class="mx-auto h-6 w-6">
-			<img
-				src="/logo-rounded.png"
-				alt="logo"
-				class="h-6 w-6"
-			/>
+			<img src="/logo-rounded.png" alt="logo" class="h-6 w-6" />
 		</a>
 	</div>
 
-
 	<!-- Nav -->
-	<ul class="flex-grow w-full overflow-y-auto overflow-x-hidden space-y-1 py-2">
+	<ul class="w-full flex-grow space-y-1 overflow-x-hidden overflow-y-auto py-2">
 		<li>
 			<a
 				href="."
 				aria-label="Home"
-				class="h-12 w-full flex justify-center items-center px-6 hover:bg-gray-500 focus:text-orange-500"
+				class="flex h-12 w-full items-center justify-center px-6 hover:bg-gray-500 focus:text-orange-500"
 			>
 				<svg
 					class="h-5 w-5"
@@ -43,7 +38,7 @@
 			<a
 				href="."
 				aria-label="Bookmarks"
-				class="h-12 w-full flex justify-center items-center px-6 hover:bg-gray-500 focus:text-orange-500"
+				class="flex h-12 w-full items-center justify-center px-6 hover:bg-gray-500 focus:text-orange-500"
 			>
 				<svg
 					class="h-5 w-5"
@@ -62,10 +57,10 @@
 	</ul>
 
 	<!-- Footer -->
-	<div class="h-16 flex items-center w-full">
+	<div class="flex h-16 w-full items-center">
 		<button
 			aria-label="Logout"
-			class="h-16 w-full flex justify-center items-center hover:bg-red-200 focus:outline-none focus:text-orange-500"
+			class="flex h-16 w-full items-center justify-center hover:bg-red-200 focus:text-orange-500 focus:outline-none"
 		>
 			<svg
 				class="h-5 w-5 text-red-700"

@@ -24,7 +24,6 @@ body {
 	background: transparent;
 }
 
-
 @utility no-scrollbar {
 	@apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }

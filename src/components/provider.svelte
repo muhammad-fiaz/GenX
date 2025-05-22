@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { invoke } from "@tauri-apps/api/core";
-	import { onMount } from "svelte";
+	import { invoke } from '@tauri-apps/api/core';
+	import { onMount } from 'svelte';
 
 	// TypeScript interfaces matching Rust structs
 	interface MetaIntegration {
@@ -48,23 +48,22 @@
 		try {
 			// First get the meta information about all integrations
 			metaIntegrations = await invoke<MetaIntegration[]>('get_meta_integrations');
-			console.log("Meta Integrations:", metaIntegrations);
+			console.log('Meta Integrations:', metaIntegrations);
 
 			// Then get the detailed configs for enabled integrations
 			integrationConfigs = await invoke<IntegrationConfig[]>('get_enabled_integrations_configs');
-			console.log("Integration Configs:", integrationConfigs);
+			console.log('Integration Configs:', integrationConfigs);
 
 			// Log all settings from all integrations
-			console.log("All Integration Settings:");
+			console.log('All Integration Settings:');
 			integrationConfigs.forEach((config, index) => {
 				console.log(`\nSettings for ${config.name} (Integration ${index + 1}):`);
-				config.settings.forEach(setting => {
+				config.settings.forEach((setting) => {
 					console.log(`- ${setting.key}: ${setting.default} (${setting.type})`);
 				});
 			});
-
 		} catch (e) {
-			console.error("Failed to load integrations:", e);
+			console.error('Failed to load integrations:', e);
 		}
 	});
 </script>

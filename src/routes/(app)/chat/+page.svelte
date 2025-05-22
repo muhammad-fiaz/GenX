@@ -9,7 +9,7 @@
 </script>
 
 <!-- Chat Page Content -->
-<div class="flex flex-1 flex-col h-full w-full">
+<div class="flex h-full w-full flex-1 flex-col">
 	<!-- Main chat area (you can add chat messages here in the future) -->
 	<div class="flex-1"></div>
 	<!-- Fixed Bottom Input -->

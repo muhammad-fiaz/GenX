@@ -15,7 +15,9 @@
 
 		const unlisten = appWindow.listen('tauri://resize', updateMaximized);
 
-		document.getElementById('titlebar-minimize')?.addEventListener('click', () => appWindow.minimize());
+		document
+			.getElementById('titlebar-minimize')
+			?.addEventListener('click', () => appWindow.minimize());
 
 		document.getElementById('titlebar-maximize')?.addEventListener('click', async () => {
 			await appWindow.toggleMaximize();
@@ -25,7 +27,7 @@
 		document.getElementById('titlebar-close')?.addEventListener('click', () => appWindow.close());
 
 		return () => {
-			unlisten.then(fn => fn());
+			unlisten.then((fn) => fn());
 		};
 	});
 
@@ -46,22 +48,23 @@
 		}
 	}
 </script>
+
 <header
-	class="flex items-center justify-between select-none px-3 h-8 bg-[#1b1b1b] shadow-inner"
+	class="flex h-8 items-center justify-between bg-[#1b1b1b] px-3 shadow-inner select-none"
 	aria-label="Application Titlebar"
 >
 	<div
-		class="drag-region flex items-center space-x-3 text-sm font-semibold text-white cursor-grab select-none"
+		class="drag-region flex cursor-grab items-center space-x-3 text-sm font-semibold text-white select-none"
 		role="button"
 		tabindex="0"
 		aria-label="Drag window"
 		on:mousedown={onMouseDown}
 		on:keydown={(e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        appWindow.startDragging();
-      }
-    }}
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				appWindow.startDragging();
+			}
+		}}
 	>
 		<span>GenX</span>
 	</div>
@@ -70,12 +73,12 @@
 		<button
 			id="titlebar-minimize"
 			type="button"
-			class="btn-control w-7 h-7 flex items-center justify-center rounded
+			class="btn-control flex h-7 w-7 items-center justify-center rounded
         hover:bg-gray-700 focus-visible:bg-gray-700"
 			aria-label="Minimize window"
 			title="Minimize"
 		>
-			<svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor">
+			<svg class="h-3 w-3 text-white" viewBox="0 0 24 24" fill="currentColor">
 				<rect x="5" y="11" width="14" height="2"></rect>
 			</svg>
 		</button>
@@ -83,14 +86,14 @@
 		<button
 			id="titlebar-maximize"
 			type="button"
-			class="btn-control w-7 h-7 flex items-center justify-center rounded
+			class="btn-control flex h-7 w-7 items-center justify-center rounded
         hover:bg-gray-700 focus-visible:bg-gray-700"
 			aria-label={$isMaximized ? 'Restore window' : 'Maximize window'}
 			title={$isMaximized ? 'Restore' : 'Maximize'}
 		>
 			{#if $isMaximized}
 				<svg
-					class="w-3 h-3 text-white"
+					class="h-3 w-3 text-white"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
@@ -103,7 +106,7 @@
 				</svg>
 			{:else}
 				<svg
-					class="w-3 h-3 text-white"
+					class="h-3 w-3 text-white"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
@@ -119,13 +122,13 @@
 		<button
 			id="titlebar-close"
 			type="button"
-			class="btn-control w-7 h-7 flex items-center justify-center rounded
+			class="btn-control flex h-7 w-7 items-center justify-center rounded
         hover:bg-red-600 focus-visible:bg-red-600"
 			aria-label="Close window"
 			title="Close"
 		>
 			<svg
-				class="w-3 h-3 text-white"
+				class="h-3 w-3 text-white"
 				viewBox="0 0 24 24"
 				fill="none"
 				stroke="currentColor"
@@ -141,15 +144,15 @@
 </header>
 
 <style>
-    :global(.btn-control) {
-        -webkit-app-region: no-drag;
-    }
+	:global(.btn-control) {
+		-webkit-app-region: no-drag;
+	}
 
-    :global(.drag-region) {
-        -webkit-app-region: drag;
-    }
+	:global(.drag-region) {
+		-webkit-app-region: drag;
+	}
 
-    button:focus {
-        outline: none;
-    }
+	button:focus {
+		outline: none;
+	}
 </style>
