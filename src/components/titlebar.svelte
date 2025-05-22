@@ -55,7 +55,7 @@
 >
 	<!-- Only this region is draggable -->
 	<div
-		class="drag-region flex cursor-grab items-center space-x-3 text-sm font-semibold text-white select-none flex-1"
+		class="drag-region flex flex-1 cursor-grab items-center space-x-3 text-sm font-semibold text-white select-none"
 		role="button"
 		tabindex="0"
 		aria-label="Drag window"
@@ -70,7 +70,7 @@
 		<span>GenX</span>
 	</div>
 
-	<div class="flex space-x-1 ml-auto">
+	<div class="ml-auto flex space-x-1">
 		<button
 			id="titlebar-minimize"
 			type="button"
@@ -145,15 +145,15 @@
 </header>
 
 <style>
-    :global(.btn-control) {
-        -webkit-app-region: no-drag;
-    }
+	:global(.btn-control) {
+		-webkit-app-region: no-drag;
+	}
 
-    :global(.drag-region) {
-        -webkit-app-region: drag;
-    }
+	:global(.drag-region) {
+		-webkit-app-region: drag;
+	}
 
-    button:focus {
-        outline: none;
-    }
+	button:focus {
+		outline: none;
+	}
 </style>
