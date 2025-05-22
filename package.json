@@ -1,6 +1,6 @@
 {
 	"name": "genx",
-	"version": "0.0.1",
+	"version": "0.0.0",
 	"description": "Genx - AI Studio",
 	"type": "module",
 	"scripts": {

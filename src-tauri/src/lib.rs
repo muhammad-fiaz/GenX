@@ -7,7 +7,9 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
-            api::get_enabled_integrations
+            api::get_enabled_integrations,
+            api::get_meta_integrations,
+            api::get_enabled_integrations_configs
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
