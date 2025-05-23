@@ -16,7 +16,7 @@
 	</div>
 	<!-- Fixed Bottom Input -->
 	<div class="sticky bottom-0 left-0 z-10 w-full">
-		<div class="mx-auto max-w-2xl px-2 py-2">
+		<div class="mx-auto max-w-2xl px-2 py-3">
 			<Input {message} on:messageChange={handleInput} />
 		</div>
 	</div>
