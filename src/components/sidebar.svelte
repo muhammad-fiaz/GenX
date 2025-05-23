@@ -1,66 +1,50 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+	import { sidebarItems } from '$lib/sidebarItems';
+
+	$: current = $page.url.pathname;
+
+	let sidebarEl: HTMLElement;
+
+	// Directive to inject raw SVG HTML safely
+	function htmlSvg(node: HTMLElement, svg: string) {
+		node.innerHTML = svg;
+		return {
+			update(newSvg: string) {
+				node.innerHTML = newSvg;
+			}
+		};
+	}
+</script>
+
 <aside
-	class="flex flex-col items-center overflow-y-auto bg-[#1b1b1b] text-white shadow"
+	bind:this={sidebarEl}
+	class="flex flex-col items-center overflow-y-auto bg-[#1b1b1b] text-white shadow border-r border-white/10 overflow-hidden"
 	style="height: calc(100vh - 2rem);"
 >
-	<!-- Logo -->
-	<div class="flex h-16 w-full items-center">
-		<a href="/" class="mx-auto h-6 w-6">
-			<img src="/logo-rounded.png" alt="logo" class="h-6 w-6" />
-		</a>
-	</div>
-
-	<!-- Nav -->
 	<ul class="w-full flex-grow space-y-1 overflow-x-hidden overflow-y-auto py-2">
-		<li>
-			<a
-				href="."
-				aria-label="Home"
-				class="flex h-12 w-full items-center justify-center px-6 hover:bg-gray-500 focus:text-orange-500"
-			>
-				<svg
-					class="h-5 w-5"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					viewBox="0 0 24 24"
+		{#each sidebarItems as item (item.href)}
+			<li>
+				<a
+					href={item.href}
+					aria-label={item.name}
+					class="flex h-12 w-full items-center justify-center px-6 text-white hover:bg-gray-500 transition-all duration-200 ease-out transform"
+					class:bg-gray-700={current === item.href}
+					class:scale-105={current === item.href}
+					tabindex="0"
 				>
-					<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
-					<path
-						d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"
-					/>
-				</svg>
-			</a>
-		</li>
-		<li>
-			<a
-				href="."
-				aria-label="Bookmarks"
-				class="flex h-12 w-full items-center justify-center px-6 hover:bg-gray-500 focus:text-orange-500"
-			>
-				<svg
-					class="h-5 w-5"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					viewBox="0 0 24 24"
-				>
-					<path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
-				</svg>
-			</a>
-		</li>
+					{@html item.svg}
+				</a>
+
+			</li>
+		{/each}
 	</ul>
 
-	<!-- Footer -->
+
 	<div class="flex h-16 w-full items-center">
 		<button
 			aria-label="Logout"
-			class="flex h-16 w-full items-center justify-center hover:bg-red-200 focus:text-orange-500 focus:outline-none"
+			class="flex h-16 w-full items-center justify-center hover:bg-red-200 focus:text-orange-500 focus:outline-none transition-colors"
 		>
 			<svg
 				class="h-5 w-5 text-red-700"
