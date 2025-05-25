@@ -15,21 +15,26 @@
 
 <div class="flex h-full bg-[#0f0f0f] text-white">
 	<!-- Sidebar: always visible, never overlays -->
-	<div class="w-50 bg-[#1a1a1a] p-4 flex flex-col space-y-6" style="box-shadow: 2px 0 8px 0 rgb(0 0 0 / 0.15);">
+	<div
+		class="flex w-50 flex-col space-y-6 bg-[#1a1a1a] p-4"
+		style="box-shadow: 2px 0 8px 0 rgb(0 0 0 / 0.15);"
+	>
 		<div class="mb-6 text-xl font-bold">Configurations</div>
 		<ul class="space-y-4">
 			<li>
 				<button
 					type="button"
 					class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors
-						{($currentTab === 'models' ? 'bg-gray-700 text-white font-semibold' : 'text-gray-400')}"
+						{$currentTab === 'models' ? 'bg-gray-700 font-semibold text-white' : 'text-gray-400'}"
 					on:click={() => switchTab('models')}
 					on:keydown={(e) => e.key === 'Enter' && switchTab('models')}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors"
-							 viewBox="0 0 32 32"
-							 class:text-white={$currentTab === 'models'}
-							 class:text-gray-400={$currentTab !== 'models'}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 transition-colors"
+						viewBox="0 0 32 32"
+						class:text-white={$currentTab === 'models'}
+						class:text-gray-400={$currentTab !== 'models'}
 					>
 						<path
 							fill="currentColor"
@@ -43,17 +48,21 @@
 				<button
 					type="button"
 					class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors
-						{($currentTab === 'provider' ? 'bg-gray-700 text-white font-semibold' : 'text-gray-400')}"
+						{$currentTab === 'provider' ? 'bg-gray-700 font-semibold text-white' : 'text-gray-400'}"
 					on:click={() => switchTab('provider')}
 					on:keydown={(e) => e.key === 'Enter' && switchTab('provider')}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors"
-							 viewBox="0 0 24 24"
-							 class:text-white={$currentTab === 'provider'}
-							 class:text-gray-400={$currentTab !== 'provider'}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 transition-colors"
+						viewBox="0 0 24 24"
+						class:text-white={$currentTab === 'provider'}
+						class:text-gray-400={$currentTab !== 'provider'}
 					>
 						<g fill="none" fill-rule="evenodd">
-							<path d="M24 0v24H0V0h24ZM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018Zm.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01l-.184-.092Z"/>
+							<path
+								d="M24 0v24H0V0h24ZM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018Zm.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01l-.184-.092Z"
+							/>
 							<path
 								fill="currentColor"
 								d="M16 15c1.306 0 2.418.835 2.83 2H20a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 1 1 0-2h9.17A3.001 3.001 0 0 1 16 15Zm0 2a1 1 0 1 0 0 2a1 1 0 0 0 0-2ZM8 9a3 3 0 0 1 2.762 1.828l.067.172H20a1 1 0 0 1 .117 1.993L20 13h-9.17a3.001 3.001 0 0 1-5.592.172L5.17 13H4a1 1 0 0 1-.117-1.993L4 11h1.17A3.001 3.001 0 0 1 8 9Zm0 2a1 1 0 1 0 0 2a1 1 0 0 0 0-2Zm8-8c1.306 0 2.418.835 2.83 2H20a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 0 1 0-2h9.17A3.001 3.001 0 0 1 16 3Zm0 2a1 1 0 1 0 0 2a1 1 0 0 0 0-2Z"
@@ -67,14 +76,16 @@
 				<button
 					type="button"
 					class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors
-						{($currentTab === 'prompt' ? 'bg-gray-700 text-white font-semibold' : 'text-gray-400')}"
+						{$currentTab === 'prompt' ? 'bg-gray-700 font-semibold text-white' : 'text-gray-400'}"
 					on:click={() => switchTab('prompt')}
 					on:keydown={(e) => e.key === 'Enter' && switchTab('prompt')}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors"
-							 viewBox="0 0 24 24"
-							 class:text-white={$currentTab === 'prompt'}
-							 class:text-gray-400={$currentTab !== 'prompt'}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 transition-colors"
+						viewBox="0 0 24 24"
+						class:text-white={$currentTab === 'prompt'}
+						class:text-gray-400={$currentTab !== 'prompt'}
 					>
 						<path
 							fill="currentColor"
@@ -88,14 +99,16 @@
 				<button
 					type="button"
 					class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors
-						{($currentTab === 'downloads' ? 'bg-gray-700 text-white font-semibold' : 'text-gray-400')}"
+						{$currentTab === 'downloads' ? 'bg-gray-700 font-semibold text-white' : 'text-gray-400'}"
 					on:click={() => switchTab('downloads')}
 					on:keydown={(e) => e.key === 'Enter' && switchTab('downloads')}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors"
-							 viewBox="0 0 15 15"
-							 class:text-white={$currentTab === 'downloads'}
-							 class:text-gray-400={$currentTab !== 'downloads'}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 transition-colors"
+						viewBox="0 0 15 15"
+						class:text-white={$currentTab === 'downloads'}
+						class:text-gray-400={$currentTab !== 'downloads'}
 					>
 						<path
 							fill="currentColor"
@@ -111,14 +124,16 @@
 				<button
 					type="button"
 					class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors
-						{($currentTab === 'custom' ? 'bg-gray-700 text-white font-semibold' : 'text-gray-400')}"
+						{$currentTab === 'custom' ? 'bg-gray-700 font-semibold text-white' : 'text-gray-400'}"
 					on:click={() => switchTab('custom')}
 					on:keydown={(e) => e.key === 'Enter' && switchTab('custom')}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors"
-							 viewBox="0 0 24 24"
-							 class:text-white={$currentTab === 'custom'}
-							 class:text-gray-400={$currentTab !== 'custom'}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-6 w-6 transition-colors"
+						viewBox="0 0 24 24"
+						class:text-white={$currentTab === 'custom'}
+						class:text-gray-400={$currentTab !== 'custom'}
 					>
 						<path
 							fill="none"
@@ -134,17 +149,26 @@
 				</button>
 			</li>
 		</ul>
-
 	</div>
 
 	<!-- Main Content -->
 	<div class="flex-1 p-6">
 		<h1 class="mb-6 text-3xl font-bold">
-			{#if $currentTab === 'models'} Models {/if}
-			{#if $currentTab === 'custom'} Custom {/if}
-			{#if $currentTab === 'prompt'} Prompt {/if}
-			{#if $currentTab === 'downloads'} Downloads {/if}
-			{#if $currentTab === 'provider'} Provider {/if}
+			{#if $currentTab === 'models'}
+				Models
+			{/if}
+			{#if $currentTab === 'custom'}
+				Custom
+			{/if}
+			{#if $currentTab === 'prompt'}
+				Prompt
+			{/if}
+			{#if $currentTab === 'downloads'}
+				Downloads
+			{/if}
+			{#if $currentTab === 'provider'}
+				Provider
+			{/if}
 		</h1>
 		<div class="rounded-lg bg-[#1a1a1a] p-6">
 			{#if $currentTab === 'models'}

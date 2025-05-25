@@ -11,7 +11,7 @@
 	let { children } = $props();
 </script>
 
-<div class="flex min-h-screen flex-col overflow-auto">
+<div class="flex min-h-screen flex-col overflow-auto bg-neutral-900">
 	<Titlebar />
 	<div class="flex-1">
 		{@render children()}
