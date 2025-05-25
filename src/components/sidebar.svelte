@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { sidebarItems } from '$lib/sidebarItems';
 
@@ -6,21 +7,29 @@
 
 	let sidebarEl: HTMLElement;
 
-	// Directive to inject raw SVG HTML safely
-	function htmlSvg(node: HTMLElement, svg: string) {
-		node.innerHTML = svg;
-		return {
-			update(newSvg: string) {
-				node.innerHTML = newSvg;
-			}
-		};
+	// Logout handler: call backend to clear cookie, clear localStorage/sessionStorage, and redirect to /signin
+	async function logout() {
+		try {
+			// Call backend to clear the cookie/session
+			await fetch('/api/auth/logout', { method: 'POST' });
+
+			// Optionally clear any localStorage or sessionStorage user data (if you store any)
+			localStorage.removeItem('user');
+			sessionStorage.removeItem('user');
+			// (Remove any other relevant keys if needed)
+
+			// Redirect to /signin (or /sign if that's your login page)
+			await goto('/signin');
+		} catch (e) {
+			console.error('Logout failed:', e);
+			await goto('/signin');
+		}
 	}
 </script>
 
 <aside
 	bind:this={sidebarEl}
-	class="flex flex-col items-center overflow-y-auto bg-[#1b1b1b] text-white shadow border-r border-white/10 overflow-hidden"
-	style="height: calc(100vh - 2rem);"
+	class="flex flex-col items-center overflow-y-auto bg-[#1b1b1b] text-white shadow border-r border-white/10 overflow-hidden h-[calc(100vh_-_2rem)]"
 >
 	<ul class="w-full flex-grow space-y-1 overflow-x-hidden overflow-y-auto py-2">
 		{#each sidebarItems as item (item.href)}
@@ -35,16 +44,15 @@
 				>
 					{@html item.svg}
 				</a>
-
 			</li>
 		{/each}
 	</ul>
-
 
 	<div class="flex h-16 w-full items-center">
 		<button
 			aria-label="Logout"
 			class="flex h-16 w-full items-center justify-center hover:bg-red-200 focus:text-orange-500 focus:outline-none transition-colors"
+			on:click={logout}
 		>
 			<svg
 				class="h-5 w-5 text-red-700"

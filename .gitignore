@@ -69,3 +69,17 @@ coverage/
 # Ignore IDE specific files
 .idea/
 *.crx
+
+
+# SQLite database
+drizzle/*.sqlite
+drizzle/migrations/*.ts
+
+# Drizzle generated files
+drizzle/pg_generated.ts
+drizzle/pg_schema.ts
+drizzle/mysql_schema.ts
+drizzle/sqlite_schema.ts
+drizzle/
+
+*.db
