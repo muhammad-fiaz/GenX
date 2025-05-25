@@ -7,7 +7,7 @@ export const POST = async ({ cookies }) => {
 		maxAge: 0,
 		httpOnly: true,
 		sameSite: 'strict',
-		secure: process.env.NODE_ENV === 'production',
+		secure: process.env.NODE_ENV === 'production'
 	});
 
 	return json({ success: true });
