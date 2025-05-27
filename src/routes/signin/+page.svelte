@@ -76,34 +76,10 @@
 <div class="flex h-[calc(100vh_-_2rem)] flex-col items-center justify-center bg-transparent">
 	<div class="flex w-full max-w-sm flex-col items-center rounded-2xl px-8 py-8">
 		{#if checking}
-			<div class="flex w-full flex-col items-center">
-				<svg
-					class="mb-4 h-16 w-16 animate-spin bg-white"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-				>
-					<circle
-						class="opacity-25"
-						cx="12"
-						cy="12"
-						r="10"
-						stroke="currentColor"
-						stroke-width="4"
-					/>
-					<path
-						class="opacity-75"
-						fill="currentColor"
-						d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-					/>
-				</svg>
-				<div class="bg-white text-center text-lg font-medium">Checking session...</div>
-			</div>
-		{:else}
-			{#if loading}
-				<div class="mb-5 flex w-full flex-col items-center">
+			<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90">
+				<div class="flex w-80 flex-col items-center rounded-lg bg-neutral-800 p-8 shadow-2xl">
 					<svg
-						class="mb-4 h-16 w-16 animate-spin bg-white"
+						class="mb-4 h-16 w-16 animate-spin text-white"
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -122,16 +98,44 @@
 							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 						/>
 					</svg>
-					<div class="mb-2 bg-white text-center text-lg font-medium">Signing in with GitHub...</div>
+					<div class="text-center text-lg font-medium text-white">Checking session...</div>
+				</div>
+			</div>
+		{:else}
+			{#if loading}
+				<div class="mb-5 flex w-full flex-col items-center">
+					<svg
+						class="mb-4 h-16 w-16 animate-spin text-white"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<circle
+							class="opacity-25"
+							cx="12"
+							cy="12"
+							r="10"
+							stroke="currentColor"
+							stroke-width="4"
+						/>
+						<path
+							class="opacity-75"
+							fill="currentColor"
+							d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+						/>
+					</svg>
+					<div class="mb-2 text-center text-lg font-medium text-white">
+						Signing in with GitHub...
+					</div>
 					<button
-						class="mt-2 rounded-lg border border-gray-800 bg-white px-5 py-1.5 text-gray-800 transition hover:bg-white/50 hover:text-white"
+						class="mt-2 rounded-lg border border-gray-800 bg-white px-5 py-1.5 text-black transition hover:bg-white/50 hover:text-white"
 						on:click={cancel}>Cancel</button
 					>
 				</div>
 			{/if}
 			{#if !loading}
 				<button
-					class="mb-2 w-full rounded-lg bg-white px-4 py-3 font-semibold text-white transition hover:bg-white/50"
+					class="mb-2 w-full rounded-lg bg-white px-4 py-3 font-semibold text-black transition hover:bg-white/50"
 					on:click={loginWithGitHub}
 					disabled={loading || checking}
 				>
