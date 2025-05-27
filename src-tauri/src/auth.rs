@@ -7,9 +7,6 @@ use tauri::async_runtime::Mutex;
 use tokio::net::TcpListener;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 
-const REDIRECT_PORT: u16 = 5174;
-const REDIRECT_URI: &str = "http://localhost:5174/callback";
-
 #[derive(Serialize, Deserialize)]
 pub struct GithubUser {
     pub id: u64,
@@ -27,7 +24,18 @@ pub async fn github_login(_window: tauri::Window) -> Result<GithubUser, String> 
     let client_id = std::env::var("GITHUB_CLIENT_ID").map_err(|_| "GITHUB_CLIENT_ID not set".to_string())?;
     let client_secret = std::env::var("GITHUB_CLIENT_SECRET").map_err(|_| "GITHUB_CLIENT_SECRET not set".to_string())?;
 
-    let redirect_uri_enc = percent_encode(REDIRECT_URI.as_bytes(), NON_ALPHANUMERIC).to_string();
+    // Bind to port 0 to get a free available port dynamically
+    let listener = TcpListener::bind("127.0.0.1:0")
+        .await
+        .map_err(|e| format!("Failed to bind local port: {e}"))?;
+
+    // Get the assigned port
+    let local_addr = listener.local_addr().map_err(|e| format!("Failed to get local address: {e}"))?;
+    let assigned_port = local_addr.port();
+
+    let redirect_uri = format!("http://localhost:{}/callback", assigned_port);
+    let redirect_uri_enc = percent_encode(redirect_uri.as_bytes(), NON_ALPHANUMERIC).to_string();
+
     let scope_enc = percent_encode(b"read:user,user:email", NON_ALPHANUMERIC).to_string();
 
     let auth_url = format!(
@@ -39,15 +47,10 @@ pub async fn github_login(_window: tauri::Window) -> Result<GithubUser, String> 
         return Err("Failed to open browser for OAuth".into());
     }
 
-    // Start the async TCP listener
-    let listener = TcpListener::bind(format!("127.0.0.1:{}", REDIRECT_PORT))
-        .await
-        .map_err(|e| format!("Failed to bind local port: {e}"))?;
-
     let code: Arc<Mutex<Option<String>>> = Arc::new(Mutex::new(None));
     let code_ref = code.clone();
 
-    // Accept one connection for the callback (non-blocking)
+    // Accept one connection for the callback
     let handle = tokio::spawn(async move {
         if let Ok((mut socket, _)) = listener.accept().await {
             let mut buffer = [0; 2048];
@@ -91,7 +94,6 @@ pub async fn github_login(_window: tauri::Window) -> Result<GithubUser, String> 
 
     handle.await.ok(); // clean up
 
-    // Exchange code for access token
     let client = Client::new();
     let token_res = client
         .post("https://github.com/login/oauth/access_token")
@@ -100,7 +102,7 @@ pub async fn github_login(_window: tauri::Window) -> Result<GithubUser, String> 
             ("client_id", client_id.as_str()),
             ("client_secret", client_secret.as_str()),
             ("code", code_val.as_str()),
-            ("redirect_uri", REDIRECT_URI),
+            ("redirect_uri", &redirect_uri),
         ])
         .send()
         .await

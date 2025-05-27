@@ -70,14 +70,13 @@
 	aria-label="Application Titlebar"
 >
 	<!-- Logo at the very left -->
-	<a
-		href="/"
-		class="mr-2 -ml-1 flex h-8 w-8 shrink-0 items-center select-none"
-		tabindex="-1"
-		aria-label="Home"
-	>
-		<img src="/logo-rounded.png" alt="logo" class="h-4 w-4" draggable="false" />
-	</a>
+	<div class="mr-2 flex items-center">
+		<div class="-ml-1 flex h-8 w-8 items-center select-none">
+			<img src="/logo-rounded.png" alt="logo" class="h-4 w-4" draggable="false" />
+		</div>
+		<span class="-ml-3 pl-0 text-sm font-semibold text-white select-none">GenX</span>
+	</div>
+
 	<!-- Titlebar Menus (draggable background, menus are no-drag) -->
 	<div
 		class="drag-region flex min-w-0 flex-1 items-center space-x-1 text-sm font-semibold text-white select-none"
@@ -103,9 +102,6 @@
 				on:click|stopPropagation={() => toggleMenu('file')}
 			>
 				<span>File</span>
-				<svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
-					<path d="M6 8l4 4 4-4" />
-				</svg>
 			</button>
 			{#if openMenu === 'file'}
 				<ul
@@ -159,9 +155,6 @@
 				on:click|stopPropagation={() => toggleMenu('edit')}
 			>
 				<span>Edit</span>
-				<svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
-					<path d="M6 8l4 4 4-4" />
-				</svg>
 			</button>
 			{#if openMenu === 'edit'}
 				<ul
@@ -231,9 +224,6 @@
 				on:click|stopPropagation={() => toggleMenu('view')}
 			>
 				<span>View</span>
-				<svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
-					<path d="M6 8l4 4 4-4" />
-				</svg>
 			</button>
 			{#if openMenu === 'view'}
 				<ul
