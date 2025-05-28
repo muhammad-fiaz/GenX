@@ -25,6 +25,7 @@
 		"@lucia-auth/oauth": "^3.5.3",
 		"@lucia-auth/sveltekit": "^0.6.11",
 		"@tauri-apps/api": "^2.5.0",
+		"@tauri-apps/plugin-log": "~2",
 		"@tauri-apps/plugin-opener": "^2.2.7",
 		"arctic": "^3.7.0",
 		"drizzle-orm": "^0.43.1",
