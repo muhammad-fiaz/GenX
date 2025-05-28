@@ -1,4 +1,6 @@
-use crate::integrations::{load_enabled_integrations_configs, OllamaConfig, load_meta, MetaIntegration};
+use crate::integrations::{
+    load_enabled_integrations_configs, load_meta, MetaIntegration, OllamaConfig,
+};
 use tauri::command;
 
 /// Return all enabled integrations configs dynamically

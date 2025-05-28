@@ -67,24 +67,26 @@ pub struct OllamaConfig {
 /// Load the meta.json file and parse it
 pub fn load_meta() -> Result<MetaFile, String> {
     // Get the project root directory
-    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").map_err(|_| "Failed to get CARGO_MANIFEST_DIR".to_string())?;
+    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR")
+        .map_err(|_| "Failed to get CARGO_MANIFEST_DIR".to_string())?;
     // Go up one level from src-tauri to get to the project root
     let path = Path::new(&manifest_dir).join("../integrations/meta.json");
-    
+
     let data = fs::read_to_string(&path)
         .map_err(|e| format!("Failed to read meta.json at {}: {}", path.display(), e))?;
-    let meta: MetaFile = serde_json::from_str(&data)
-        .map_err(|e| format!("Failed to parse meta.json: {}", e))?;
+    let meta: MetaFile =
+        serde_json::from_str(&data).map_err(|e| format!("Failed to parse meta.json: {}", e))?;
     Ok(meta)
 }
 
 /// Load an individual integration config file by its path
 pub fn load_integration_config(path_str: &str) -> Result<OllamaConfig, String> {
     // Get the project root directory
-    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").map_err(|_| "Failed to get CARGO_MANIFEST_DIR".to_string())?;
+    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR")
+        .map_err(|_| "Failed to get CARGO_MANIFEST_DIR".to_string())?;
     // Go up one level from src-tauri to get to the project root
     let path = Path::new(&manifest_dir).join("../".to_string() + path_str);
-    
+
     let data = fs::read_to_string(&path)
         .map_err(|e| format!("Failed to read config at {}: {}", path.display(), e))?;
     let config: OllamaConfig = serde_json::from_str(&data)
@@ -105,5 +107,3 @@ pub fn load_enabled_integrations_configs() -> Result<Vec<OllamaConfig>, String> 
 
     Ok(configs)
 }
-
-
