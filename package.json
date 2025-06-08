@@ -28,7 +28,7 @@
 		"@tauri-apps/plugin-log": "~2",
 		"@tauri-apps/plugin-opener": "^2.2.7",
 		"arctic": "^3.7.0",
-		"drizzle-orm": "^0.43.1",
+		"drizzle-orm": "^0.44.1",
 		"gsap": "^3.13.0",
 		"install": "^0.13.0",
 		"lucia": "^3.2.2",
